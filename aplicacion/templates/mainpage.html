@@ -1,0 +1,123 @@
+{% extends "./base.html" %}
+
+{% block body %}
+
+<div class="container text-center">
+    <div style="text-align: center; margin-top: 50px;">
+        <div class="card mb-3" style="max-width: 540px; margin:0px auto;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    {% load static %}
+                    <img src="{% static 'img/hombre.jpg' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Javier Emilio Julian Garcia</h5>
+                        <p class="card-text">Edad: 35 Años</p>
+                        <p class="card-text">Altura: 1.80M</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div style="color: bisque; margin-top: 30px; margin-bottom: 30px;">
+
+
+        <div style="margin-top: 15px;">
+            <form action="registrarinformacion/" method="post">{% csrf_token%}
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <h6>ritmo cardiaco</h6>
+                            </th>
+                            <th scope="col">
+
+                                <h6>Oxigeno en sangre</h6>
+                            </th>
+                            <th scope="col">
+                                <h6>Estres</h6>
+                            </th>
+                            <th>
+                        
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                            <td>
+                                 <input id="frecuenciaCardiaca" type="number" class="form-control" name="frecuenciaCardiaca" aria-describedby="emailHelp">
+                            </td>
+                           
+
+                            <td>
+                                 <input id="oxigenoSangre" type="number" class="form-control" name="oxigenoSangre" aria-describedby="emailHelp">
+                            </td>
+ 
+
+                            <td>
+                                 <input id="estres" type="number" class="form-control" name="estres" aria-describedby="emailHelp">
+                            </td>
+                            <td>
+                                <button   type="submit" class="btn btn-light">Agregar
+                                    registro</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </div>
+            </form>
+
+    </div>
+    
+    <div style="margin-top: 50px;">
+    </div>
+
+    <div style="text-align: center;">
+        <h3>Registros Reportado por SmartWhatch</h3>
+    </div>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> {% load static %}
+                    <h6>ritmo cardiaco</h6>
+                    <img src="{% static 'img/corazon.png' %}" style="color: white;" width="100px" height="100px" alt="">
+                </th>
+                <th scope="col">
+
+                    <h6>Oxigeno en sangre</h6>
+                    <img src="{% static 'img/limpiar.png' %}" style="color: white;" width="100px" height="100px" alt="">
+                </th>
+                <th scope="col">
+                    <h6>Estres</h6>
+                    <img src="{% static 'img/estres.png' %}" style="color: white;" width="100px" height="100px" alt="">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lis in listados %}
+
+            <tr>
+
+                <td>{{lis.frecuenciaCardiaca}}</td>
+
+
+                <td>{{lis.oxigenoSangre}}</td>
+
+
+                <td>{{lis.estres}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+
+</div>
+</div>
+
+
+{% endblock %}
